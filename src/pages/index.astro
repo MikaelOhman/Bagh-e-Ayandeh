@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>باغ آینده - Bagh-e Ayandeh</title>
+  <title>باغ آینده - Bagh-e Ayandeh | Future Garden</title>
+  
+  <!-- Local Leaflet CSS -->
+  <link rel="stylesheet" href="/Bagh-e-Ayandeh/leaflet/leaflet.css" />
+  
   <style>
     * {
       margin: 0;
@@ -12,227 +16,275 @@
     }
     
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #f8fafc;
+    }
+    
+    /* Header/Navigation */
+    .header {
       background: linear-gradient(135deg, #059669 0%, #0ea5e9 100%);
-      min-height: 100vh;
+      color: white;
+      padding: 20px 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      position: relative;
+      z-index: 1000;
+    }
+    
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .logo {
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 20px;
+      gap: 15px;
     }
     
-    .container {
-      background: white;
-      border-radius: 20px;
-      padding: 40px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      max-width: 1200px;
-      width: 100%;
-    }
-    
-    h1 {
-      text-align: center;
-      margin-bottom: 10px;
-      background: linear-gradient(to right, #059669, #0ea5e9);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .logo-icon {
       font-size: 2.5em;
     }
     
-    .subtitle {
-      text-align: center;
-      color: #666;
-      margin-bottom: 30px;
+    .logo-text h1 {
+      font-size: 1.8em;
+      margin: 0;
+      font-weight: 700;
+    }
+    
+    .logo-text p {
+      font-size: 0.9em;
+      opacity: 0.9;
+      margin: 0;
+    }
+    
+    .nav {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+    
+    .nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.3s;
       font-size: 1.1em;
     }
     
-    #map-container {
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto;
+    .nav a:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
     }
     
-    svg {
+    /* Map Section */
+    .map-section {
+      position: relative;
+      height: calc(100vh - 100px);
+    }
+    
+    #map {
       width: 100%;
-      height: auto;
+      height: 100%;
+    }
+    
+    .map-overlay {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      padding: 15px 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      z-index: 500;
+      text-align: center;
+      max-width: 600px;
+    }
+    
+    .map-overlay h2 {
+      margin: 0 0 5px 0;
+      color: #0369a1;
+      font-size: 1.3em;
+    }
+    
+    .map-overlay p {
+      margin: 0;
+      color: #666;
+      font-size: 0.95em;
+    }
+    
+    /* Popup styles */
+    .leaflet-popup-content {
+      text-align: center;
+      font-family: system-ui, sans-serif;
+    }
+    
+    .leaflet-popup-content strong {
+      font-size: 18px;
       display: block;
+      margin-bottom: 8px;
+      color: #0369a1;
     }
     
-    .country-outline {
-      fill: #e0f2fe;
-      stroke: #0369a1;
-      stroke-width: 2;
-      transition: all 0.3s ease;
-    }
-    
-    .country-outline:hover {
-      fill: #bae6fd;
-    }
-    
-    .city-marker {
+    .explore-btn {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: linear-gradient(to right, #059669, #0ea5e9);
+      color: white;
+      border: none;
+      border-radius: 8px;
       cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .city-marker:hover .city-circle {
-      r: 18;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-    }
-    
-    .city-marker:hover .city-label {
       font-weight: bold;
-      font-size: 16px;
-    }
-    
-    .city-circle-available {
-      fill: #0ea5e9;
-      stroke: white;
-      stroke-width: 3;
-    }
-    
-    .city-circle-soon {
-      fill: #94a3b8;
-      stroke: white;
-      stroke-width: 3;
-    }
-    
-    .city-label {
-      fill: #1e293b;
       font-size: 14px;
-      font-weight: 600;
-      text-anchor: middle;
-      pointer-events: none;
-      transition: all 0.3s ease;
     }
     
-    .legend {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
+    .explore-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
     
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .legend-circle {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border: 3px solid white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    }
-    
-    .legend-available {
-      background: #0ea5e9;
-    }
-    
-    .legend-soon {
-      background: #94a3b8;
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .nav {
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+      
+      .map-overlay {
+        left: 10px;
+        right: 10px;
+        transform: none;
+        max-width: calc(100% - 20px);
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🌱 باغ آینده - Bagh-e Ayandeh</h1>
-    <p class="subtitle">Click on any city to explore</p>
-    
-    <div id="map-container">
-      <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-        <!-- Iran country outline (more realistic shape) -->
-        <path class="country-outline" d="
-          M 50,320
-          L 60,280 L 80,250 L 110,220 L 150,195 L 200,180
-          L 250,170 L 300,165 L 350,160 L 400,162 L 450,168
-          L 500,178 L 540,192 L 575,210 L 610,235 L 640,265
-          L 665,295 L 685,330 L 700,365 L 710,400 L 715,435
-          L 710,470 L 695,500 L 670,525 L 635,545 L 590,560
-          L 540,568 L 485,570 L 430,565 L 380,555 L 330,540
-          L 285,520 L 245,495 L 210,470 L 180,440 L 155,410
-          L 135,380 L 120,350 L 110,330 L 100,315
-          L 80,310 L 65,315
-          Z
-        "/>
-        
-        <!-- Cities with more accurate positions -->
-        <!-- Shiraz - Available (south-central) -->
-        <g class="city-marker" data-city="shiraz" data-available="true">
-          <circle class="city-circle city-circle-available" cx="400" cy="470" r="15"/>
-          <text class="city-label" x="400" y="500">Shiraz شیراز</text>
-        </g>
-        
-        <!-- Tehran - Coming Soon (north-central) -->
-        <g class="city-marker" data-city="tehran" data-available="false">
-          <circle class="city-circle city-circle-soon" cx="380" cy="240" r="12"/>
-          <text class="city-label" x="380" y="265">Tehran تهران</text>
-        </g>
-        
-        <!-- Isfahan - Coming Soon (central) -->
-        <g class="city-marker" data-city="isfahan" data-available="false">
-          <circle class="city-circle city-circle-soon" cx="390" cy="350" r="12"/>
-          <text class="city-label" x="390" y="375">Isfahan اصفهان</text>
-        </g>
-        
-        <!-- Tabriz - Coming Soon (northwest) -->
-        <g class="city-marker" data-city="tabriz" data-available="false">
-          <circle class="city-circle city-circle-soon" cx="280" cy="200" r="12"/>
-          <text class="city-label" x="280" y="225">Tabriz تبریز</text>
-        </g>
-        
-        <!-- Mashhad - Coming Soon (northeast) -->
-        <g class="city-marker" data-city="mashhad" data-available="false">
-          <circle class="city-circle city-circle-soon" cx="560" cy="250" r="12"/>
-          <text class="city-label" x="560" y="275">Mashhad مشهد</text>
-        </g>
-      </svg>
-    </div>
-    
-    <div class="legend">
-      <div class="legend-item">
-        <div class="legend-circle legend-available"></div>
-        <span>Available now</span>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <div class="logo-icon">🌱</div>
+        <div class="logo-text">
+          <h1>باغ آینده</h1>
+          <p>Bagh-e Ayandeh • Future Garden</p>
+        </div>
       </div>
-      <div class="legend-item">
-        <div class="legend-circle legend-soon"></div>
-        <span>Coming soon</span>
-      </div>
+      
+      <nav class="nav">
+        <a href="/Bagh-e-Ayandeh/">خانه</a>
+        <a href="/Bagh-e-Ayandeh/shiraz">شیراز</a>
+      </nav>
     </div>
+  </header>
+
+  <!-- Map Section -->
+  <div class="map-section">
+    <div class="map-overlay">
+      <h2>کجا می‌خواهید شروع کنید؟</h2>
+      <p>روی هر شهر کلیک کنید تا راه‌حل‌های منطقه‌ای را ببینید</p>
+    </div>
+    <div id="map"></div>
   </div>
 
-  <script>
-    const basePath = window.location.pathname.includes('Bagh-e-Ayandeh') ? '/Bagh-e-Ayandeh' : '';
+  <!-- Local Leaflet JS -->
+  <script is:inline src="/Bagh-e-Ayandeh/leaflet/leaflet.js"></script>
+  
+  <script is:inline>
+    console.log('Loading Iran map...');
     
-    const cities = {
-      shiraz: {
-        name: 'Shiraz شیراز',
-        url: basePath + '/shiraz'
-      },
-      tehran: { name: 'Tehran تهران', url: null },
-      isfahan: { name: 'Isfahan اصفهان', url: null },
-      tabriz: { name: 'Tabriz تبریز', url: null },
-      mashhad: { name: 'Mashhad مشهد', url: null }
-    };
-
-    const markers = document.querySelectorAll('.city-marker');
-
-    markers.forEach(marker => {
-      marker.addEventListener('click', function() {
-        const cityKey = this.getAttribute('data-city');
-        const available = this.getAttribute('data-available') === 'true';
-        const city = cities[cityKey];
-        
-        if (available && city.url) {
-          window.location.href = city.url;
-        }
-      });
+    // Initialize map centered on Iran
+    const map = L.map('map', {
+      center: [32.4279, 53.6880],
+      zoom: 6,
+      minZoom: 5,
+      maxZoom: 18,
+      zoomControl: true
     });
 
-    console.log('✓ Iran map loaded!');
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors',
+      maxZoom: 18
+    }).addTo(map);
+
+    const basePath = '/Bagh-e-Ayandeh';
+
+    // Cities data with accurate coordinates
+    const cities = [
+      { 
+        name: 'شیراز • Shiraz', 
+        coords: [29.5918, 52.5836], 
+        available: true, 
+        url: basePath + '/shiraz',
+        description: '🏛️ زادگاه حافظ و سعدی<br>Birthplace of Hafez & Saadi'
+      },
+      { 
+        name: 'تهران • Tehran', 
+        coords: [35.6892, 51.3890], 
+        available: false,
+        description: '🏙️ پایتخت (به زودی)<br>Capital (coming soon)'
+      },
+      { 
+        name: 'اصفهان • Isfahan', 
+        coords: [32.6546, 51.6680], 
+        available: false,
+        description: '🕌 نصف جهان (به زودی)<br>Half of the World (coming soon)'
+      },
+      { 
+        name: 'تبریز • Tabriz', 
+        coords: [38.0962, 46.2738], 
+        available: false,
+        description: '🏔️ شهر تاریخی (به زودی)<br>Historic city (coming soon)'
+      },
+      { 
+        name: 'مشهد • Mashhad', 
+        coords: [36.2605, 59.6168], 
+        available: false,
+        description: '🕌 مرکز معنوی (به زودی)<br>Spiritual center (coming soon)'
+      }
+    ];
+
+    // Add city markers
+    cities.forEach(city => {
+      const marker = L.circleMarker(city.coords, {
+        radius: city.available ? 14 : 10,
+        fillColor: city.available ? '#0ea5e9' : '#94a3b8',
+        color: '#fff',
+        weight: 4,
+        opacity: 1,
+        fillOpacity: 0.9
+      }).addTo(map);
+
+      const popupContent = city.available ? 
+        `<strong>${city.name}</strong><br>${city.description}<br><button class="explore-btn" onclick="window.location.href='${city.url}'">کاوش کنید →</button>` :
+        `<strong>${city.name}</strong><br>${city.description}`;
+
+      marker.bindPopup(popupContent, {
+        maxWidth: 280,
+        className: 'city-popup'
+      });
+      
+      if (city.available) {
+        marker.on('click', function() {
+          marker.openPopup();
+        });
+      }
+    });
+    
+    console.log('✓ Iran map loaded with ' + cities.length + ' cities!');
   </script>
 </body>
 </html>
