@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  /* Persian Garden Colors */
+  --color-persian-green-50: oklch(96% 0.02 145);
+  --color-persian-green-100: oklch(92% 0.04 145);
+  --color-persian-green-200: oklch(85% 0.08 145);
+  --color-persian-green-300: oklch(75% 0.12 145);
+  --color-persian-green-400: oklch(65% 0.16 145);
+  --color-persian-green-500: oklch(55% 0.20 145);
+  --color-persian-green-600: oklch(45% 0.18 145);
+  --color-persian-green-700: oklch(35% 0.14 145);
+  --color-persian-green-800: oklch(25% 0.10 145);
+  --color-persian-green-900: oklch(15% 0.06 145);
+
+  --color-persian-turquoise-50: oklch(96% 0.02 200);
+  --color-persian-turquoise-100: oklch(92% 0.04 200);
+  --color-persian-turquoise-200: oklch(85% 0.08 200);
+  --color-persian-turquoise-300: oklch(75% 0.12 200);
+  --color-persian-turquoise-400: oklch(65% 0.16 200);
+  --color-persian-turquoise-500: oklch(55% 0.20 200);
+  --color-persian-turquoise-600: oklch(45% 0.18 200);
+  --color-persian-turquoise-700: oklch(35% 0.14 200);
+  --color-persian-turquoise-800: oklch(25% 0.10 200);
+  --color-persian-turquoise-900: oklch(15% 0.06 200);
+
+  --color-persian-gold-50: oklch(96% 0.02 85);
+  --color-persian-gold-100: oklch(92% 0.04 85);
+  --color-persian-gold-200: oklch(85% 0.08 85);
+  --color-persian-gold-300: oklch(75% 0.12 85);
+  --color-persian-gold-400: oklch(65% 0.16 85);
+  --color-persian-gold-500: oklch(55% 0.20 85);
+  --color-persian-gold-600: oklch(45% 0.18 85);
+  --color-persian-gold-700: oklch(35% 0.14 85);
+  --color-persian-gold-800: oklch(25% 0.10 85);
+  --color-persian-gold-900: oklch(15% 0.06 85);
+}
+
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+}
+
+body {
+  font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif;
+}

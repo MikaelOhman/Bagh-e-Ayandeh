@@ -1,0 +1,242 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const content = {
+  fa: {
+    title: 'باغ آینده - Bagh-e Ayandeh',
+    heading: 'باغ آینده',
+    subtitle: 'امیدی برای ایران آزاد',
+    description: 'ما از این فرض آغاز می‌کنیم که دیکتاتوری سقوط کرده و مردم آزادی خود را بازیافته‌اند. این وبسایت نقشه راهی است برای ساختن ایرانی زیبا، پایدار و امیدوارکننده.',
+    shiraz: 'شیراز',
+    culture: 'فرهنگ',
+    solutions: 'راه‌حل‌ها',
+    music: 'موسیقی',
+    startShiraz: 'شروع با شیراز 🏛️',
+    ourVision: 'چشم‌انداز ما',
+    keyTopics: 'موضوعات کلیدی',
+    regions: 'مناطق',
+    regionsDesc: 'راه‌حل‌های منطقه‌ای برای هر استان، با توجه به آب و هوا، فرهنگ و چالش‌های خاص',
+    solutionsTitle: 'راه‌حل‌ها',
+    solutionsDesc: 'آب، انرژی، زیرساخت، و شهرسازی - با هزینه‌ها و زمان‌بندی واقع‌بینانه',
+    cultureTitle: 'فرهنگ',
+    cultureDesc: 'شعر، معماری و باغ‌های ایرانی - ترکیب سنت با مدرنیته',
+    explore: 'کاوش کنید ←',
+    discover: 'کشف کنید ←',
+    startWith: 'شروع با شیراز ←',
+    hafez: '«اگر به دل می‌نشینی، دنیا همه از آن توست»',
+    hafezAuthor: 'حافظ شیرازی',
+    footer: 'پروژه‌ای خانوادگی با عشق برای ایران 🇮🇷❤️',
+  },
+  en: {
+    title: 'Bagh-e Ayandeh - Future Garden',
+    heading: 'Future Garden',
+    subtitle: 'A Vision of Hope for a Free Iran',
+    description: 'We start from the premise that dictatorship has fallen and people have reclaimed their freedom. This website is a roadmap for building a beautiful, sustainable, and hopeful Iran.',
+    shiraz: 'Shiraz',
+    culture: 'Culture',
+    solutions: 'Solutions',
+    music: 'Music',
+    startShiraz: 'Start with Shiraz 🏛️',
+    ourVision: 'Our Vision',
+    keyTopics: 'Key Topics',
+    regions: 'Regions',
+    regionsDesc: 'Regional solutions for each province, considering climate, culture, and specific challenges',
+    solutionsTitle: 'Solutions',
+    solutionsDesc: 'Water, energy, infrastructure, and urban planning - with realistic costs and timelines',
+    cultureTitle: 'Culture',
+    cultureDesc: 'Persian poetry, architecture, and gardens - blending tradition with modernity',
+    explore: 'Explore →',
+    discover: 'Discover →',
+    startWith: 'Start with Shiraz →',
+    hafez: '"If you seek in the heart, the whole world is yours"',
+    hafezAuthor: 'Hafez of Shiraz',
+    footer: 'A family project with love for Iran 🇮🇷❤️',
+  }
+};
+---
+
+<Layout title="باغ آینده - Bagh-e Ayandeh | Future Garden">
+  <div class="min-h-screen" x-data="{ lang: 'fa' }">
+    <!-- Navigation -->
+    <nav class="bg-white/80 backdrop-blur-sm shadow-md sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center space-x-8" :class="{ 'space-x-reverse': lang === 'fa' }">
+            <h1 class="text-2xl font-bold bg-gradient-to-r from-persian-green-600 via-persian-turquoise-600 to-persian-gold-600 bg-clip-text text-transparent">
+              <span x-show="lang === 'fa'">باغ آینده</span>
+              <span x-show="lang === 'en'">Bagh-e Ayandeh</span>
+            </h1>
+            <span class="text-sm text-gray-600">
+              <span x-show="lang === 'fa'">Future Garden</span>
+              <span x-show="lang === 'en'">باغ آینده</span>
+            </span>
+          </div>
+          
+          <div class="flex items-center space-x-6" :class="{ 'space-x-reverse': lang === 'fa' }">
+            <a href="/shiraz" class="text-gray-700 hover:text-persian-turquoise-600 transition">
+              <span x-show="lang === 'fa'">شیراز</span>
+              <span x-show="lang === 'en'">Shiraz</span>
+            </a>
+            <a href="/culture" class="text-gray-700 hover:text-persian-turquoise-600 transition">
+              <span x-show="lang === 'fa'">فرهنگ</span>
+              <span x-show="lang === 'en'">Culture</span>
+            </a>
+            <a href="/solutions" class="text-gray-700 hover:text-persian-turquoise-600 transition">
+              <span x-show="lang === 'fa'">راه‌حل‌ها</span>
+              <span x-show="lang === 'en'">Solutions</span>
+            </a>
+            <a href="/music" class="text-gray-700 hover:text-persian-turquoise-600 transition">
+              <span x-show="lang === 'fa'">موسیقی</span>
+              <span x-show="lang === 'en'">Music</span>
+            </a>
+            <button 
+              @click="lang = lang === 'fa' ? 'en' : 'fa'; document.documentElement.setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr')"
+              class="px-4 py-2 text-sm bg-persian-gold-500 text-white rounded-lg hover:bg-persian-gold-600 transition"
+            >
+              <span x-show="lang === 'fa'">EN</span>
+              <span x-show="lang === 'en'">فا</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative py-20 px-4 overflow-hidden">
+      <div class="max-w-6xl mx-auto text-center">
+        <div class="mb-8 inline-block">
+          <div class="text-7xl mb-4 animate-bounce">🌱</div>
+        </div>
+        
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+          <span class="bg-gradient-to-r from-persian-green-600 via-persian-turquoise-600 to-persian-gold-600 bg-clip-text text-transparent">
+            <span x-show="lang === 'fa'">{content.fa.heading}</span>
+            <span x-show="lang === 'en'">{content.en.heading}</span>
+          </span>
+        </h1>
+        
+        <p class="text-2xl md:text-3xl text-gray-700 mb-4">
+          <span x-show="lang === 'fa'">{content.fa.subtitle}</span>
+          <span x-show="lang === 'en'">{content.en.subtitle}</span>
+        </p>
+        
+        <div class="prose prose-lg max-w-3xl mx-auto mb-12" :class="{ 'text-right': lang === 'fa', 'text-left': lang === 'en' }">
+          <p class="text-gray-700 leading-relaxed text-xl">
+            <span x-show="lang === 'fa'">{content.fa.description}</span>
+            <span x-show="lang === 'en'">{content.en.description}</span>
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a 
+            href="/shiraz"
+            class="px-8 py-4 bg-gradient-to-r from-persian-green-600 to-persian-turquoise-600 text-white rounded-xl text-lg font-semibold hover:shadow-xl transition-all transform hover:scale-105"
+          >
+            <span x-show="lang === 'fa'">{content.fa.startShiraz}</span>
+            <span x-show="lang === 'en'">{content.en.startShiraz}</span>
+          </a>
+          <a 
+            href="/vision"
+            class="px-8 py-4 bg-white text-persian-turquoise-600 border-2 border-persian-turquoise-600 rounded-xl text-lg font-semibold hover:bg-persian-turquoise-50 transition-all"
+          >
+            <span x-show="lang === 'fa'">{content.fa.ourVision}</span>
+            <span x-show="lang === 'en'">{content.en.ourVision}</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="absolute top-20 right-10 text-6xl opacity-20 animate-pulse">🌿</div>
+      <div class="absolute bottom-20 left-10 text-6xl opacity-20 animate-pulse">💐</div>
+      <div class="absolute top-40 left-20 text-5xl opacity-20 animate-pulse">🌸</div>
+    </section>
+
+    <!-- Key Topics -->
+    <section class="py-16 px-4 bg-white/50">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">
+          <span x-show="lang === 'fa'">{content.fa.keyTopics}</span>
+          <span x-show="lang === 'en'">{content.en.keyTopics}</span>
+        </h2>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="group bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition-all transform hover:-translate-y-2">
+            <div class="text-5xl mb-4">🗺️</div>
+            <h3 class="text-2xl font-bold mb-3 text-persian-green-700">
+              <span x-show="lang === 'fa'">{content.fa.regions}</span>
+              <span x-show="lang === 'en'">{content.en.regions}</span>
+            </h3>
+            <p class="text-gray-600 mb-4">
+              <span x-show="lang === 'fa'">{content.fa.regionsDesc}</span>
+              <span x-show="lang === 'en'">{content.en.regionsDesc}</span>
+            </p>
+            <a href="/shiraz" class="text-persian-turquoise-600 hover:text-persian-turquoise-700 font-semibold">
+              <span x-show="lang === 'fa'">{content.fa.startWith}</span>
+              <span x-show="lang === 'en'">{content.en.startWith}</span>
+            </a>
+          </div>
+
+          <div class="group bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition-all transform hover:-translate-y-2">
+            <div class="text-5xl mb-4">💡</div>
+            <h3 class="text-2xl font-bold mb-3 text-persian-turquoise-700">
+              <span x-show="lang === 'fa'">{content.fa.solutionsTitle}</span>
+              <span x-show="lang === 'en'">{content.en.solutionsTitle}</span>
+            </h3>
+            <p class="text-gray-600 mb-4">
+              <span x-show="lang === 'fa'">{content.fa.solutionsDesc}</span>
+              <span x-show="lang === 'en'">{content.en.solutionsDesc}</span>
+            </p>
+            <a href="/solutions" class="text-persian-turquoise-600 hover:text-persian-turquoise-700 font-semibold">
+              <span x-show="lang === 'fa'">{content.fa.explore}</span>
+              <span x-show="lang === 'en'">{content.en.explore}</span>
+            </a>
+          </div>
+
+          <div class="group bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition-all transform hover:-translate-y-2">
+            <div class="text-5xl mb-4">🏛️</div>
+            <h3 class="text-2xl font-bold mb-3 text-persian-gold-700">
+              <span x-show="lang === 'fa'">{content.fa.cultureTitle}</span>
+              <span x-show="lang === 'en'">{content.en.cultureTitle}</span>
+            </h3>
+            <p class="text-gray-600 mb-4">
+              <span x-show="lang === 'fa'">{content.fa.cultureDesc}</span>
+              <span x-show="lang === 'en'">{content.en.cultureDesc}</span>
+            </p>
+            <a href="/culture" class="text-persian-turquoise-600 hover:text-persian-turquoise-700 font-semibold">
+              <span x-show="lang === 'fa'">{content.fa.discover}</span>
+              <span x-show="lang === 'en'">{content.en.discover}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hafez Quote -->
+    <section class="py-20 px-4 bg-gradient-to-r from-persian-turquoise-600 to-persian-green-600">
+      <div class="max-w-4xl mx-auto text-center text-white">
+        <p class="text-3xl md:text-4xl font-bold mb-6 leading-relaxed">
+          <span x-show="lang === 'fa'">{content.fa.hafez}</span>
+          <span x-show="lang === 'en'">{content.en.hafez}</span>
+        </p>
+        <p class="text-xl md:text-2xl opacity-90 mb-4">
+          <span x-show="lang === 'fa'">{content.fa.hafezAuthor}</span>
+          <span x-show="lang === 'en'">{content.en.hafezAuthor}</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+      <div class="max-w-6xl mx-auto text-center">
+        <h3 class="text-2xl font-bold mb-4">باغ آینده - Bagh-e Ayandeh</h3>
+        <p class="text-gray-400 mb-6">
+          <span x-show="lang === 'fa'">{content.fa.footer}</span>
+          <span x-show="lang === 'en'">{content.en.footer}</span>
+        </p>
+        <p class="text-sm text-gray-500">Open source • Built with hope • For a free Iran</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Alpine.js for language switching -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</Layout>

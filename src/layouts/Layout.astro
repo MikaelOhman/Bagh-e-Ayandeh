@@ -1,0 +1,27 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang?: 'fa' | 'en';
+}
+
+const { title, description = 'A vision of hope for a free Iran', lang = 'fa' } = Astro.props;
+const isRTL = lang === 'fa';
+---
+
+<!doctype html>
+<html lang={lang} dir={isRTL ? 'rtl' : 'ltr'}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-gradient-to-br from-persian-green-50 via-persian-turquoise-50 to-persian-gold-50">
+    <slot />
+  </body>
+</html>
