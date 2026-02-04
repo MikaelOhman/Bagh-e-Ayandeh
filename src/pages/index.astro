@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>باغ آینده - Bagh-e Ayandeh | Future Garden</title>
+  <title>Bagh-e Ayandeh | Future Garden - A Vision for a Free Iran</title>
   
   <!-- Local Leaflet CSS -->
   <link rel="stylesheet" href="/Bagh-e-Ayandeh/leaflet/leaflet.css" />
@@ -100,24 +100,24 @@
       left: 50%;
       transform: translateX(-50%);
       background: white;
-      padding: 15px 30px;
+      padding: 20px 35px;
       border-radius: 15px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
       z-index: 500;
       text-align: center;
-      max-width: 600px;
+      max-width: 650px;
     }
     
     .map-overlay h2 {
-      margin: 0 0 5px 0;
+      margin: 0 0 8px 0;
       color: #0369a1;
-      font-size: 1.3em;
+      font-size: 1.5em;
     }
     
     .map-overlay p {
       margin: 0;
       color: #666;
-      font-size: 0.95em;
+      font-size: 1em;
     }
     
     /* Popup styles */
@@ -178,14 +178,14 @@
       <div class="logo">
         <div class="logo-icon">🌱</div>
         <div class="logo-text">
-          <h1>باغ آینده</h1>
-          <p>Bagh-e Ayandeh • Future Garden</p>
+          <h1>Bagh-e Ayandeh</h1>
+          <p>باغ آینده • Future Garden for Iran</p>
         </div>
       </div>
       
       <nav class="nav">
-        <a href="/Bagh-e-Ayandeh/">خانه</a>
-        <a href="/Bagh-e-Ayandeh/shiraz">شیراز</a>
+        <a href="/Bagh-e-Ayandeh/">Home</a>
+        <a href="/Bagh-e-Ayandeh/shiraz">Shiraz</a>
       </nav>
     </div>
   </header>
@@ -193,8 +193,8 @@
   <!-- Map Section -->
   <div class="map-section">
     <div class="map-overlay">
-      <h2>کجا می‌خواهید شروع کنید؟</h2>
-      <p>روی هر شهر کلیک کنید تا راه‌حل‌های منطقه‌ای را ببینید</p>
+      <h2>Where would you like to start?</h2>
+      <p>Click on any city to explore regional solutions for a free Iran</p>
     </div>
     <div id="map"></div>
   </div>
@@ -225,35 +225,35 @@
     // Cities data with accurate coordinates
     const cities = [
       { 
-        name: 'شیراز • Shiraz', 
+        name: 'Shiraz', 
         coords: [29.5918, 52.5836], 
         available: true, 
         url: basePath + '/shiraz',
-        description: '🏛️ زادگاه حافظ و سعدی<br>Birthplace of Hafez & Saadi'
+        description: '🏛️ Birthplace of Hafez & Saadi'
       },
       { 
-        name: 'تهران • Tehran', 
+        name: 'Tehran', 
         coords: [35.6892, 51.3890], 
         available: false,
-        description: '🏙️ پایتخت (به زودی)<br>Capital (coming soon)'
+        description: '🏙️ Capital (coming soon)'
       },
       { 
-        name: 'اصفهان • Isfahan', 
+        name: 'Isfahan', 
         coords: [32.6546, 51.6680], 
         available: false,
-        description: '🕌 نصف جهان (به زودی)<br>Half of the World (coming soon)'
+        description: '🕌 Half of the World (coming soon)'
       },
       { 
-        name: 'تبریز • Tabriz', 
+        name: 'Tabriz', 
         coords: [38.0962, 46.2738], 
         available: false,
-        description: '🏔️ شهر تاریخی (به زودی)<br>Historic city (coming soon)'
+        description: '🏔️ Historic city (coming soon)'
       },
       { 
-        name: 'مشهد • Mashhad', 
+        name: 'Mashhad', 
         coords: [36.2605, 59.6168], 
         available: false,
-        description: '🕌 مرکز معنوی (به زودی)<br>Spiritual center (coming soon)'
+        description: '🕌 Spiritual center (coming soon)'
       }
     ];
 
@@ -269,7 +269,7 @@
       }).addTo(map);
 
       const popupContent = city.available ? 
-        `<strong>${city.name}</strong><br>${city.description}<br><button class="explore-btn" onclick="window.location.href='${city.url}'">کاوش کنید →</button>` :
+        `<strong>${city.name}</strong><br>${city.description}<br><button class="explore-btn" onclick="window.location.href='${city.url}'">Explore →</button>` :
         `<strong>${city.name}</strong><br>${city.description}`;
 
       marker.bindPopup(popupContent, {
