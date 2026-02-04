@@ -1,13 +1,98 @@
-<!DOCTYPE html><html lang="fa" dir="rtl"> <head><meta charset="UTF-8"><meta name="description" content="A vision of hope for a free Iran"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v5.17.1"><title>باغ آینده - Bagh-e Ayandeh | Future Garden</title><link rel="stylesheet" href="/Bagh-e-Ayandeh/_astro/index.dCIKc79l.css">
-<style>.city-marker[data-astro-cid-wm3zwo6c]{transition:all .3s ease}.city-marker[data-astro-cid-wm3zwo6c]:hover circle[data-astro-cid-wm3zwo6c]{r:16}
-</style></head> <body class="bg-gradient-to-br from-persian-green-50 via-persian-turquoise-50 to-persian-gold-50">  <div class="min-h-screen" x-data="{ lang: 'fa' }"> <!-- Navigation --> <nav class="bg-white/80 backdrop-blur-sm shadow-md sticky top-0 z-50"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="flex justify-between items-center h-16"> <div class="flex items-center space-x-8" :class="{ 'space-x-reverse': lang === 'fa' }"> <h1 class="text-2xl font-bold bg-gradient-to-r from-persian-green-600 via-persian-turquoise-600 to-persian-gold-600 bg-clip-text text-transparent"> <span x-show="lang === 'fa'">باغ آینده</span> <span x-show="lang === 'en'">Bagh-e Ayandeh</span> </h1> <span class="text-sm text-gray-600"> <span x-show="lang === 'fa'">Future Garden</span> <span x-show="lang === 'en'">باغ آینده</span> </span> </div> <div class="flex items-center space-x-6" :class="{ 'space-x-reverse': lang === 'fa' }"> <button @click="lang = lang === 'fa' ? 'en' : 'fa'; document.documentElement.setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr')" class="px-4 py-2 text-sm bg-persian-gold-500 text-white rounded-lg hover:bg-persian-gold-600 transition"> <span x-show="lang === 'fa'">EN</span> <span x-show="lang === 'en'">فا</span> </button> </div> </div> </div> </nav> <!-- Hero Section --> <section class="relative py-12 px-4"> <div class="max-w-6xl mx-auto text-center"> <div class="mb-6 inline-block"> <div class="text-6xl mb-4 animate-bounce">🌱</div> </div> <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight"> <span class="bg-gradient-to-r from-persian-green-600 via-persian-turquoise-600 to-persian-gold-600 bg-clip-text text-transparent"> <span x-show="lang === 'fa'">باغ آینده</span> <span x-show="lang === 'en'">Future Garden</span> </span> </h1> <p class="text-xl md:text-2xl text-gray-700 mb-4"> <span x-show="lang === 'fa'">امیدی برای ایران آزاد</span> <span x-show="lang === 'en'">A Vision of Hope for a Free Iran</span> </p> <div class="max-w-3xl mx-auto mb-8" :class="{ 'text-right': lang === 'fa', 'text-left': lang === 'en' }"> <p class="text-gray-600 leading-relaxed"> <span x-show="lang === 'fa'">ما از این فرض آغاز می‌کنیم که دیکتاتوری سقوط کرده و مردم آزادی خود را بازیافته‌اند. این وبسایت نقشه راهی است برای ساختن ایرانی زیبا، پایدار و امیدوارکننده.</span> <span x-show="lang === 'en'">We start from the premise that dictatorship has fallen and people have reclaimed their freedom. This website is a roadmap for building a beautiful, sustainable, and hopeful Iran.</span> </p> </div> </div> </section> <!-- Interactive Map Section --> <section class="py-12 px-4 bg-white/50"> <div class="max-w-6xl mx-auto"> <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800"> <span x-show="lang === 'fa'">کجا می‌خواهید شروع کنید؟</span> <span x-show="lang === 'en'">Where would you like to start?</span> </h2> <p class="text-center text-gray-600 mb-8"> <span x-show="lang === 'fa'">روی هر شهر کلیک کنید تا راه‌حل‌های منطقه‌ای را ببینید</span> <span x-show="lang === 'en'">Click on any city to explore regional solutions</span> </p> <div class="relative max-w-4xl mx-auto" data-astro-cid-wm3zwo6c> <svg viewBox="0 0 800 600" class="w-full h-auto" data-astro-cid-wm3zwo6c> <!-- Iran outline (simplified) --> <path d="M 250 150 L 350 130 L 450 140 L 550 160 L 620 200 L 680 250 L 700 320 L 680 400 L 650 460 L 600 500 L 520 530 L 420 540 L 320 530 L 240 500 L 180 450 L 140 380 L 120 300 L 150 220 Z" fill="oklch(92% 0.04 145)" stroke="oklch(45% 0.18 145)" stroke-width="2" class="transition-all duration-300 hover:fill-persian-green-100" data-astro-cid-wm3zwo6c></path> <!-- Shiraz --> <g class="city-marker cursor-pointer group" data-city="shiraz" data-astro-cid-wm3zwo6c> <circle cx="380" cy="420" r="12" class="fill-persian-turquoise-500 stroke-white stroke-2 transition-all group-hover:r-16 group-hover:fill-persian-turquoise-600" data-astro-cid-wm3zwo6c></circle> <text x="380" y="455" text-anchor="middle" class="fill-gray-800 text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity" data-astro-cid-wm3zwo6c>
-شیراز • Shiraz
-</text> </g> <!-- Tehran (placeholder - not yet implemented) --> <g class="city-marker cursor-not-allowed group opacity-50" data-city="tehran" data-astro-cid-wm3zwo6c> <circle cx="400" cy="250" r="10" class="fill-gray-400 stroke-white stroke-2" data-astro-cid-wm3zwo6c></circle> <text x="400" y="280" text-anchor="middle" class="fill-gray-600 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity" data-astro-cid-wm3zwo6c>
-تهران • Tehran (coming soon)
-</text> </g> <!-- Isfahan (placeholder) --> <g class="city-marker cursor-not-allowed group opacity-50" data-city="isfahan" data-astro-cid-wm3zwo6c> <circle cx="420" cy="320" r="10" class="fill-gray-400 stroke-white stroke-2" data-astro-cid-wm3zwo6c></circle> <text x="420" y="350" text-anchor="middle" class="fill-gray-600 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity" data-astro-cid-wm3zwo6c>
-اصفهان • Isfahan (coming soon)
-</text> </g> <!-- Tabriz (placeholder) --> <g class="city-marker cursor-not-allowed group opacity-50" data-city="tabriz" data-astro-cid-wm3zwo6c> <circle cx="320" cy="180" r="10" class="fill-gray-400 stroke-white stroke-2" data-astro-cid-wm3zwo6c></circle> <text x="320" y="210" text-anchor="middle" class="fill-gray-600 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity" data-astro-cid-wm3zwo6c>
-تبریز • Tabriz (coming soon)
-</text> </g> <!-- Mashhad (placeholder) --> <g class="city-marker cursor-not-allowed group opacity-50" data-city="mashhad" data-astro-cid-wm3zwo6c> <circle cx="580" cy="240" r="10" class="fill-gray-400 stroke-white stroke-2" data-astro-cid-wm3zwo6c></circle> <text x="580" y="270" text-anchor="middle" class="fill-gray-600 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity" data-astro-cid-wm3zwo6c>
-مشهد • Mashhad (coming soon)
-</text> </g> </svg> <!-- Legend --> <div class="mt-8 flex flex-wrap justify-center gap-6 text-sm" data-astro-cid-wm3zwo6c> <div class="flex items-center gap-2" data-astro-cid-wm3zwo6c> <div class="w-4 h-4 rounded-full bg-persian-turquoise-500 border-2 border-white" data-astro-cid-wm3zwo6c></div> <span class="text-gray-700" data-astro-cid-wm3zwo6c>Available now</span> </div> <div class="flex items-center gap-2" data-astro-cid-wm3zwo6c> <div class="w-4 h-4 rounded-full bg-gray-400 border-2 border-white" data-astro-cid-wm3zwo6c></div> <span class="text-gray-600" data-astro-cid-wm3zwo6c>Coming soon</span> </div> </div> </div> <script type="module">document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll(".city-marker[data-city]").forEach(t=>{t.addEventListener("click",c=>{t.getAttribute("data-city")==="shiraz"&&(window.location.href="/Bagh-e-Ayandeh/shiraz")})})});</script>  </div> </section> <!-- Hafez Quote --> <section class="py-16 px-4 bg-gradient-to-r from-persian-turquoise-600 to-persian-green-600"> <div class="max-w-4xl mx-auto text-center text-white"> <p class="text-2xl md:text-3xl font-bold mb-4 leading-relaxed"> <span x-show="lang === 'fa'">«اگر به دل می‌نشینی، دنیا همه از آن توست»</span> <span x-show="lang === 'en'">&quot;If you seek in the heart, the whole world is yours&quot;</span> </p> <p class="text-lg md:text-xl opacity-90"> <span x-show="lang === 'fa'">حافظ شیرازی</span> <span x-show="lang === 'en'">Hafez of Shiraz</span> </p> </div> </section> <!-- Footer --> <footer class="bg-gray-900 text-white py-12 px-4"> <div class="max-w-6xl mx-auto text-center"> <h3 class="text-2xl font-bold mb-4">باغ آینده - Bagh-e Ayandeh</h3> <p class="text-gray-400 mb-6"> <span x-show="lang === 'fa'">پروژه‌ای خانوادگی با عشق برای ایران 🇮🇷❤️</span> <span x-show="lang === 'en'">A family project with love for Iran 🇮🇷❤️</span> </p> <p class="text-sm text-gray-500">Open source • Built with hope • For a free Iran</p> </div> </footer> </div>  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>  </body></html>
+<!DOCTYPE html><html lang="fa" dir="rtl"> <head><meta charset="UTF-8"><meta name="description" content="A vision of hope for a free Iran"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v5.17.1"><title>باغ آینده - Bagh-e Ayandeh | Future Garden</title><link rel="stylesheet" href="/Bagh-e-Ayandeh/_astro/index.BKS_bThW.css"></head> <body class="bg-gradient-to-br from-persian-green-50 via-persian-turquoise-50 to-persian-gold-50">   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""> <div class="min-h-screen" x-data="{ lang: 'fa' }"> <!-- Navigation --> <nav class="bg-white/80 backdrop-blur-sm shadow-md sticky top-0 z-50"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="flex justify-between items-center h-16"> <div class="flex items-center space-x-8" :class="{ 'space-x-reverse': lang === 'fa' }"> <h1 class="text-2xl font-bold bg-gradient-to-r from-persian-green-600 via-persian-turquoise-600 to-persian-gold-600 bg-clip-text text-transparent"> <span x-show="lang === 'fa'">باغ آینده</span> <span x-show="lang === 'en'">Bagh-e Ayandeh</span> </h1> <span class="text-sm text-gray-600"> <span x-show="lang === 'fa'">Future Garden</span> <span x-show="lang === 'en'">باغ آینده</span> </span> </div> <div class="flex items-center space-x-6" :class="{ 'space-x-reverse': lang === 'fa' }"> <button @click="lang = lang === 'fa' ? 'en' : 'fa'; document.documentElement.setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr')" class="px-4 py-2 text-sm bg-persian-gold-500 text-white rounded-lg hover:bg-persian-gold-600 transition"> <span x-show="lang === 'fa'">EN</span> <span x-show="lang === 'en'">فا</span> </button> </div> </div> </div> </nav> <!-- Hero Section --> <section class="relative py-8 px-4 bg-gradient-to-br from-persian-green-50 via-persian-turquoise-50 to-persian-gold-50"> <div class="max-w-6xl mx-auto text-center"> <div class="mb-4 inline-block"> <div class="text-5xl mb-2 animate-bounce">🌱</div> </div> <h1 class="text-4xl md:text-6xl font-bold mb-3 leading-tight"> <span class="bg-gradient-to-r from-persian-green-600 via-persian-turquoise-600 to-persian-gold-600 bg-clip-text text-transparent"> <span x-show="lang === 'fa'">باغ آینده</span> <span x-show="lang === 'en'">Future Garden</span> </span> </h1> <p class="text-xl md:text-2xl text-gray-700 mb-3"> <span x-show="lang === 'fa'">امیدی برای ایران آزاد</span> <span x-show="lang === 'en'">A Vision of Hope for a Free Iran</span> </p> <div class="max-w-3xl mx-auto mb-6" :class="{ 'text-right': lang === 'fa', 'text-left': lang === 'en' }"> <p class="text-gray-600 leading-relaxed text-sm md:text-base"> <span x-show="lang === 'fa'">ما از این فرض آغاز می‌کنیم که دیکتاتوری سقوط کرده و مردم آزادی خود را بازیافته‌اند. این وبسایت نقشه راهی است برای ساختن ایرانی زیبا، پایدار و امیدوارکننده.</span> <span x-show="lang === 'en'">We start from the premise that dictatorship has fallen and people have reclaimed their freedom. This website is a roadmap for building a beautiful, sustainable, and hopeful Iran.</span> </p> </div> </div> </section> <!-- Map Section --> <section class="py-8 px-4"> <div class="max-w-7xl mx-auto"> <h2 class="text-3xl md:text-4xl font-bold text-center mb-3 text-gray-800"> <span x-show="lang === 'fa'">کجا می‌خواهید شروع کنید؟</span> <span x-show="lang === 'en'">Where would you like to start?</span> </h2> <p class="text-center text-gray-600 mb-6"> <span x-show="lang === 'fa'">روی هر شهر کلیک کنید تا راه‌حل‌های منطقه‌ای را ببینید</span> <span x-show="lang === 'en'">Click on any city to explore regional solutions</span> </p> <!-- Map Container --> <div id="map" class="w-full h-[600px] rounded-xl shadow-2xl border-4 border-white"></div> <!-- Legend --> <div class="mt-6 flex flex-wrap justify-center gap-6 text-sm"> <div class="flex items-center gap-2"> <div class="w-4 h-4 rounded-full bg-persian-turquoise-500 border-2 border-white shadow"></div> <span class="text-gray-700"> <span x-show="lang === 'fa'">در دسترس</span> <span x-show="lang === 'en'">Available now</span> </span> </div> <div class="flex items-center gap-2"> <div class="w-4 h-4 rounded-full bg-gray-400 border-2 border-white shadow"></div> <span class="text-gray-600"> <span x-show="lang === 'fa'">به زودی</span> <span x-show="lang === 'en'">Coming soon</span> </span> </div> </div> </div> </section> <!-- Hafez Quote --> <section class="py-16 px-4 bg-gradient-to-r from-persian-turquoise-600 to-persian-green-600"> <div class="max-w-4xl mx-auto text-center text-white"> <p class="text-2xl md:text-3xl font-bold mb-4 leading-relaxed"> <span x-show="lang === 'fa'">«اگر به دل می‌نشینی، دنیا همه از آن توست»</span> <span x-show="lang === 'en'">&quot;If you seek in the heart, the whole world is yours&quot;</span> </p> <p class="text-lg md:text-xl opacity-90"> <span x-show="lang === 'fa'">حافظ شیرازی</span> <span x-show="lang === 'en'">Hafez of Shiraz</span> </p> </div> </section> <!-- Footer --> <footer class="bg-gray-900 text-white py-12 px-4"> <div class="max-w-6xl mx-auto text-center"> <h3 class="text-2xl font-bold mb-4">باغ آینده - Bagh-e Ayandeh</h3> <p class="text-gray-400 mb-6"> <span x-show="lang === 'fa'">پروژه‌ای خانوادگی با عشق برای ایران 🇮🇷❤️</span> <span x-show="lang === 'en'">A family project with love for Iran 🇮🇷❤️</span> </p> <p class="text-sm text-gray-500">Open source • Built with hope • For a free Iran</p> </div> </footer> </div>  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize map centered on Iran
+      const map = L.map('map', {
+        center: [32.4279, 53.6880],
+        zoom: 6,
+        zoomControl: true,
+        scrollWheelZoom: true
+      });
+
+      // Add OpenStreetMap tiles
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 18,
+      }).addTo(map);
+
+      // Custom icon for available cities
+      const availableIcon = L.divIcon({
+        className: 'custom-marker',
+        html: '<div style="background: #0ea5e9; width: 24px; height: 24px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>',
+        iconSize: [24, 24],
+        iconAnchor: [12, 12]
+      });
+
+      // Custom icon for coming soon cities
+      const comingSoonIcon = L.divIcon({
+        className: 'custom-marker',
+        html: '<div style="background: #9ca3af; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.2);"></div>',
+        iconSize: [20, 20],
+        iconAnchor: [10, 10]
+      });
+
+      // Cities data
+      const cities = [
+        {
+          name: 'شیراز • Shiraz',
+          coords: [29.5918, 52.5836],
+          available: true,
+          url: '/Bagh-e-Ayandeh/shiraz',
+          description: '🏛️ Birthplace of Hafez & Saadi'
+        },
+        {
+          name: 'تهران • Tehran',
+          coords: [35.6892, 51.3890],
+          available: false,
+          description: '🏙️ Capital (coming soon)'
+        },
+        {
+          name: 'اصفهان • Isfahan',
+          coords: [32.6546, 51.6680],
+          available: false,
+          description: '🕌 Half of the World (coming soon)'
+        },
+        {
+          name: 'تبریز • Tabriz',
+          coords: [38.0962, 46.2738],
+          available: false,
+          description: '🏔️ Historic city (coming soon)'
+        },
+        {
+          name: 'مشهد • Mashhad',
+          coords: [36.2605, 59.6168],
+          available: false,
+          description: '🕌 Spiritual center (coming soon)'
+        }
+      ];
+
+      // Add markers for each city
+      cities.forEach(city => {
+        const marker = L.marker(city.coords, {
+          icon: city.available ? availableIcon : comingSoonIcon
+        }).addTo(map);
+
+        // Popup content
+        const popupContent = `
+          <div style="text-align: center; font-family: 'Vazirmatn', sans-serif;">
+            <strong style="font-size: 16px; display: block; margin-bottom: 8px;">${city.name}</strong>
+            <p style="font-size: 13px; color: #666; margin: 4px 0;">${city.description}</p>
+            ${city.available ? 
+              '<button onclick="window.location.href=\'' + city.url + '\'" style="margin-top: 8px; padding: 8px 16px; background: linear-gradient(to right, #059669, #0ea5e9); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Click to explore</button>' :
+              '<span style="font-size: 12px; color: #999;">Coming soon...</span>'
+            }
+          </div>
+        `;
+
+        marker.bindPopup(popupContent);
+
+        // Click handler for available cities
+        if (city.available) {
+          marker.on('click', function() {
+            setTimeout(() => {
+              window.location.href = city.url;
+            }, 1500);
+          });
+        }
+      });
+    });
+  </script>  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>  </body></html>
