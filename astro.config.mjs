@@ -6,6 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://mikaelohman.github.io',
   base: '/Bagh-e-Ayandeh',
+  output: 'static',
   vite: {
     plugins: [tailwindcss()]
   }
