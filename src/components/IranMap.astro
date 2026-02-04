@@ -1,0 +1,120 @@
+---
+// Interactive Iran Map Component
+---
+
+<div class="relative max-w-4xl mx-auto">
+  <svg viewBox="0 0 800 600" class="w-full h-auto">
+    <!-- Iran outline (simplified) -->
+    <path
+      d="M 250 150 L 350 130 L 450 140 L 550 160 L 620 200 L 680 250 L 700 320 L 680 400 L 650 460 L 600 500 L 520 530 L 420 540 L 320 530 L 240 500 L 180 450 L 140 380 L 120 300 L 150 220 Z"
+      fill="oklch(92% 0.04 145)"
+      stroke="oklch(45% 0.18 145)"
+      stroke-width="2"
+      class="transition-all duration-300 hover:fill-persian-green-100"
+    />
+    
+    <!-- Shiraz -->
+    <g class="city-marker cursor-pointer group" data-city="shiraz">
+      <circle cx="380" cy="420" r="12" 
+        class="fill-persian-turquoise-500 stroke-white stroke-2 transition-all group-hover:r-16 group-hover:fill-persian-turquoise-600"
+      />
+      <text x="380" y="455" 
+        text-anchor="middle" 
+        class="fill-gray-800 text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity"
+      >
+        شیراز • Shiraz
+      </text>
+    </g>
+
+    <!-- Tehran (placeholder - not yet implemented) -->
+    <g class="city-marker cursor-not-allowed group opacity-50" data-city="tehran">
+      <circle cx="400" cy="250" r="10" 
+        class="fill-gray-400 stroke-white stroke-2"
+      />
+      <text x="400" y="280" 
+        text-anchor="middle" 
+        class="fill-gray-600 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity"
+      >
+        تهران • Tehran (coming soon)
+      </text>
+    </g>
+
+    <!-- Isfahan (placeholder) -->
+    <g class="city-marker cursor-not-allowed group opacity-50" data-city="isfahan">
+      <circle cx="420" cy="320" r="10" 
+        class="fill-gray-400 stroke-white stroke-2"
+      />
+      <text x="420" y="350" 
+        text-anchor="middle" 
+        class="fill-gray-600 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity"
+      >
+        اصفهان • Isfahan (coming soon)
+      </text>
+    </g>
+
+    <!-- Tabriz (placeholder) -->
+    <g class="city-marker cursor-not-allowed group opacity-50" data-city="tabriz">
+      <circle cx="320" cy="180" r="10" 
+        class="fill-gray-400 stroke-white stroke-2"
+      />
+      <text x="320" y="210" 
+        text-anchor="middle" 
+        class="fill-gray-600 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity"
+      >
+        تبریز • Tabriz (coming soon)
+      </text>
+    </g>
+
+    <!-- Mashhad (placeholder) -->
+    <g class="city-marker cursor-not-allowed group opacity-50" data-city="mashhad">
+      <circle cx="580" cy="240" r="10" 
+        class="fill-gray-400 stroke-white stroke-2"
+      />
+      <text x="580" y="270" 
+        text-anchor="middle" 
+        class="fill-gray-600 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity"
+      >
+        مشهد • Mashhad (coming soon)
+      </text>
+    </g>
+  </svg>
+
+  <!-- Legend -->
+  <div class="mt-8 flex flex-wrap justify-center gap-6 text-sm">
+    <div class="flex items-center gap-2">
+      <div class="w-4 h-4 rounded-full bg-persian-turquoise-500 border-2 border-white"></div>
+      <span class="text-gray-700">Available now</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <div class="w-4 h-4 rounded-full bg-gray-400 border-2 border-white"></div>
+      <span class="text-gray-600">Coming soon</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cityMarkers = document.querySelectorAll('.city-marker[data-city]');
+    
+    cityMarkers.forEach(marker => {
+      marker.addEventListener('click', (e) => {
+        const city = marker.getAttribute('data-city');
+        
+        // Only navigate if city page exists (currently only shiraz)
+        if (city === 'shiraz') {
+          window.location.href = '/Bagh-e-Ayandeh/shiraz';
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .city-marker {
+    transition: all 0.3s ease;
+  }
+  
+  .city-marker:hover circle {
+    r: 16;
+  }
+</style>
