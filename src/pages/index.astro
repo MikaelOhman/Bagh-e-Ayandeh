@@ -5,10 +5,14 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Open Earth - Crowdsourced City Rebuilding">
 	<main>
 		<div class="hero">
-			<h1 class="title">Open Earth</h1>
-			<p class="tagline">
-				Crowdsourced problem-solving for cities in need
-			</p>
+			<div class="hero-background"></div>
+			<div class="hero-content">
+				<img src="/logo.svg" alt="Open Earth Logo" class="logo" />
+				<h1 class="title">Open Earth</h1>
+				<p class="tagline">
+					Crowdsourced problem-solving for cities in need
+				</p>
+			</div>
 		</div>
 
 		<section class="vision">
@@ -131,6 +135,12 @@ import Layout from '../layouts/Layout.astro';
 	:global(body) {
 		background: #0a0e27;
 		color: #e0e0e0;
+		scroll-behavior: smooth;
+	}
+
+	:global(*)::selection {
+		background: #667eea;
+		color: white;
 	}
 
 	main {
@@ -142,25 +152,76 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	.hero {
+		position: relative;
 		text-align: center;
-		padding: 4rem 2rem;
-		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-		color: white;
+		padding: 6rem 2rem;
 		border-radius: 16px;
 		margin-bottom: 3rem;
+		overflow: hidden;
+		min-height: 70vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.hero-background {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+		animation: gradientShift 15s ease infinite;
+		z-index: 0;
+	}
+
+	@keyframes gradientShift {
+		0%, 100% { transform: scale(1) rotate(0deg); }
+		50% { transform: scale(1.1) rotate(5deg); }
+	}
+
+	.hero-content {
+		position: relative;
+		z-index: 1;
+		color: white;
+	}
+
+	.logo {
+		width: 120px;
+		height: 120px;
+		margin: 0 auto 2rem;
+		animation: float 3s ease-in-out infinite;
+		filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+	}
+
+	@keyframes float {
+		0%, 100% { transform: translateY(0px); }
+		50% { transform: translateY(-10px); }
 	}
 
 	.title {
-		font-size: 4rem;
+		font-size: 4.5rem;
 		margin: 0;
 		font-weight: 900;
 		line-height: 1.2;
+		text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+		animation: fadeInUp 1s ease-out;
 	}
 
 	.tagline {
 		font-size: 1.5rem;
 		margin-top: 1rem;
 		opacity: 0.95;
+		text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+		animation: fadeInUp 1.2s ease-out;
+	}
+
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 
 	section {
@@ -190,17 +251,20 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	.step {
-		background: #1a1f3a;
-		border: 2px solid #667eea;
+		background: rgba(26, 31, 58, 0.8);
+		backdrop-filter: blur(10px);
+		border: 2px solid rgba(102, 126, 234, 0.5);
 		border-radius: 12px;
 		padding: 2rem;
 		text-align: center;
-		transition: transform 0.3s, box-shadow 0.3s;
+		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
 	.step:hover {
-		transform: translateY(-5px);
-		box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+		transform: translateY(-8px) scale(1.02);
+		box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+		border-color: #667eea;
+		background: rgba(102, 126, 234, 0.1);
 	}
 
 	.step-number {
@@ -260,15 +324,30 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	.feature {
-		background: #1a1f3a;
+		background: rgba(26, 31, 58, 0.6);
+		backdrop-filter: blur(10px);
+		border: 1px solid rgba(102, 126, 234, 0.3);
 		padding: 2rem;
 		border-radius: 12px;
 		text-align: center;
+		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.feature:hover {
+		transform: translateY(-5px);
+		border-color: #667eea;
+		box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
 	}
 
 	.icon {
 		font-size: 3rem;
 		margin-bottom: 1rem;
+		display: inline-block;
+		transition: transform 0.3s;
+	}
+
+	.feature:hover .icon {
+		transform: scale(1.2) rotate(5deg);
 	}
 
 	.feature h3 {
@@ -285,12 +364,20 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	.principle-list li {
-		background: #1a1f3a;
+		background: rgba(26, 31, 58, 0.6);
+		backdrop-filter: blur(10px);
 		border-left: 5px solid #667eea;
 		padding: 1.5rem;
 		margin-bottom: 1rem;
 		border-radius: 8px;
 		box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+		transition: all 0.3s;
+	}
+
+	.principle-list li:hover {
+		transform: translateX(10px);
+		box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+		border-left-width: 8px;
 	}
 
 	.principle-list strong {

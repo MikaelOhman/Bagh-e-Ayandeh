@@ -1,0 +1,41 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Earth circle with gradient -->
+  <defs>
+    <linearGradient id="earthGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#4facfe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="landGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#42e695;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3bb2b8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main circle (Earth) -->
+  <circle cx="100" cy="100" r="90" fill="url(#earthGradient)" opacity="0.9"/>
+  
+  <!-- Land masses (abstract continents) -->
+  <path d="M 60,60 Q 80,50 100,60 T 140,70 Q 150,80 140,95 L 120,100 Q 110,110 100,105 L 80,100 Q 65,90 60,75 Z" 
+        fill="url(#landGradient)" opacity="0.8"/>
+  
+  <path d="M 70,120 Q 85,115 100,120 L 110,130 Q 115,140 108,145 L 90,140 Q 75,135 70,125 Z" 
+        fill="url(#landGradient)" opacity="0.8"/>
+  
+  <!-- Growth symbol (sprout) emerging from earth -->
+  <path d="M 100,40 Q 95,35 95,28 Q 95,22 100,20 Q 105,22 105,28 Q 105,35 100,40 Z" 
+        fill="#42e695" opacity="0.9"/>
+  <path d="M 100,32 Q 92,30 88,26" stroke="#42e695" stroke-width="2" fill="none" opacity="0.7"/>
+  <path d="M 100,32 Q 108,30 112,26" stroke="#42e695" stroke-width="2" fill="none" opacity="0.7"/>
+  
+  <!-- Orbital ring (representing global connection) -->
+  <ellipse cx="100" cy="100" rx="95" ry="40" 
+           stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.3"
+           transform="rotate(-20 100 100)"/>
+  
+  <!-- Small connection nodes -->
+  <circle cx="50" cy="100" r="3" fill="#ffffff" opacity="0.8"/>
+  <circle cx="150" cy="100" r="3" fill="#ffffff" opacity="0.8"/>
+  <circle cx="100" cy="50" r="3" fill="#ffffff" opacity="0.8"/>
+  <circle cx="100" cy="150" r="3" fill="#ffffff" opacity="0.8"/>
+</svg>
