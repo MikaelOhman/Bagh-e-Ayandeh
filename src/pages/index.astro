@@ -1,8 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import AnimatedBackground from '../components/AnimatedBackground.astro';
 ---
 
 <Layout title="Open Earth - Crowdsourced City Rebuilding">
+	<AnimatedBackground />
 	<main>
 		<div class="hero">
 			<div class="hero-background"></div>
@@ -421,3 +423,39 @@ import Layout from '../layouts/Layout.astro';
 		color: #667eea;
 	}
 </style>
+
+<script>
+// Parallax scrolling effect
+window.addEventListener('scroll', () => {
+	const scrolled = window.pageYOffset;
+	const parallaxElements = document.querySelectorAll('.hero-content');
+	
+	parallaxElements.forEach(el => {
+		const speed = 0.5;
+		el.style.transform = `translateY(${scrolled * speed}px)`;
+	});
+});
+
+// Intersection Observer for fade-in animations
+const observerOptions = {
+	threshold: 0.1,
+	rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+	entries.forEach(entry => {
+		if (entry.isIntersecting) {
+			entry.target.style.opacity = '1';
+			entry.target.style.transform = 'translateY(0)';
+		}
+	});
+}, observerOptions);
+
+// Observe all sections
+document.querySelectorAll('section').forEach(section => {
+	section.style.opacity = '0';
+	section.style.transform = 'translateY(50px)';
+	section.style.transition = 'all 0.8s ease-out';
+	observer.observe(section);
+});
+</script>
