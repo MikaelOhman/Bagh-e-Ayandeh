@@ -1,0 +1,310 @@
+---
+const topContributors = [
+  {
+    name: "Sara M.",
+    avatar: "👩‍💻",
+    points: 1250,
+    contributions: "12 solutions proposed, 45h volunteered",
+    badges: ["💡 Problem Solver", "⏰ Time Champion"],
+    anonymous: false
+  },
+  {
+    name: "Anonymous",
+    avatar: "👤",
+    points: 980,
+    contributions: "3 projects completed, Equipment donated",
+    badges: ["🛠️ Builder", "📦 Equipment Hero"],
+    anonymous: true
+  },
+  {
+    name: "Ali K.",
+    avatar: "👨‍🔧",
+    points: 850,
+    contributions: "VVS expertise, 8 projects helped",
+    badges: ["🔧 Expert", "🌟 Mentor"],
+    anonymous: false
+  },
+  {
+    name: "Anonymous",
+    avatar: "👤",
+    points: 720,
+    contributions: "20h coordination, 5 teams organized",
+    badges: ["👥 Organizer"],
+    anonymous: true
+  },
+  {
+    name: "Maryam R.",
+    avatar: "👩‍🌾",
+    points: 650,
+    contributions: "Agricultural expertise, 30h field work",
+    badges: ["🌱 Green Thumb"],
+    anonymous: false
+  }
+];
+---
+
+<div class="leaderboard">
+  <div class="leaderboard-header">
+    <h2>🏆 Top Contributors This Month</h2>
+    <p class="subtitle">Building reputation through action, not money</p>
+  </div>
+
+  <div class="leaderboard-list">
+    {topContributors.map((contributor, index) => (
+      <div class="contributor-card">
+        <div class="rank">#{index + 1}</div>
+        <div class="avatar">{contributor.avatar}</div>
+        <div class="contributor-info">
+          <div class="contributor-header">
+            <h3 class="name">{contributor.name}</h3>
+            <div class="points">{contributor.points} pts</div>
+          </div>
+          <p class="contributions">{contributor.contributions}</p>
+          <div class="badges">
+            {contributor.badges.map(badge => (
+              <span class="badge">{badge}</span>
+            ))}
+          </div>
+        </div>
+        {contributor.anonymous && (
+          <div class="anonymous-indicator" title="Anonymous contributor">
+            🔒
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+
+  <div class="earn-points">
+    <h3>💫 How to Earn Points</h3>
+    <div class="point-methods">
+      <div class="method">
+        <span class="method-icon">💡</span>
+        <span class="method-text">Propose Solutions</span>
+        <span class="method-points">+50 pts</span>
+      </div>
+      <div class="method">
+        <span class="method-icon">⏰</span>
+        <span class="method-text">Volunteer Time</span>
+        <span class="method-points">+10 pts/hour</span>
+      </div>
+      <div class="method">
+        <span class="method-icon">🛠️</span>
+        <span class="method-text">Complete Projects</span>
+        <span class="method-points">+200 pts</span>
+      </div>
+      <div class="method">
+        <span class="method-icon">🎓</span>
+        <span class="method-text">Share Expertise</span>
+        <span class="method-points">+100 pts</span>
+      </div>
+      <div class="method">
+        <span class="method-icon">📦</span>
+        <span class="method-text">Donate Equipment</span>
+        <span class="method-points">+150 pts</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="privacy-note">
+    <p>✨ <strong>Your choice:</strong> Contribute publicly to build your reputation, or stay anonymous. Both are valued equally.</p>
+  </div>
+</div>
+
+<style>
+  .leaderboard {
+    margin: 4rem 0;
+  }
+
+  .leaderboard-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .leaderboard-header h2 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    color: #a0a0a0;
+    font-size: 1.1rem;
+  }
+
+  .leaderboard-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .contributor-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: rgba(26, 31, 58, 0.8);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.4s;
+    position: relative;
+  }
+
+  .contributor-card:hover {
+    transform: translateX(10px);
+    border-color: #667eea;
+    box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4);
+  }
+
+  .rank {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #667eea;
+    min-width: 50px;
+    text-align: center;
+  }
+
+  .contributor-card:nth-child(1) .rank {
+    color: #FFD700;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  }
+
+  .contributor-card:nth-child(2) .rank {
+    color: #C0C0C0;
+  }
+
+  .contributor-card:nth-child(3) .rank {
+    color: #CD7F32;
+  }
+
+  .avatar {
+    font-size: 3rem;
+    min-width: 60px;
+    text-align: center;
+  }
+
+  .contributor-info {
+    flex: 1;
+  }
+
+  .contributor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .name {
+    font-size: 1.3rem;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .points {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #42e695;
+  }
+
+  .contributions {
+    color: #a0a0a0;
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+    border: 1px solid rgba(102, 126, 234, 0.4);
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    color: #e0e0e0;
+  }
+
+  .anonymous-indicator {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.2rem;
+    opacity: 0.6;
+  }
+
+  .earn-points {
+    background: rgba(26, 31, 58, 0.6);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .earn-points h3 {
+    color: #ffffff;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .point-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .method {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: rgba(102, 126, 234, 0.1);
+    padding: 1rem;
+    border-radius: 12px;
+    transition: all 0.3s;
+  }
+
+  .method:hover {
+    background: rgba(102, 126, 234, 0.2);
+    transform: translateY(-3px);
+  }
+
+  .method-icon {
+    font-size: 1.8rem;
+  }
+
+  .method-text {
+    flex: 1;
+    color: #e0e0e0;
+    font-size: 0.95rem;
+  }
+
+  .method-points {
+    color: #42e695;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+
+  .privacy-note {
+    background: rgba(66, 230, 149, 0.1);
+    border: 1px solid rgba(66, 230, 149, 0.3);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .privacy-note p {
+    color: #e0e0e0;
+    font-size: 1.05rem;
+    margin: 0;
+  }
+
+  .privacy-note strong {
+    color: #42e695;
+  }
+</style>
