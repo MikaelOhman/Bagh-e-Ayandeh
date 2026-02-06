@@ -1,12 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import AnimatedBackground from '../components/AnimatedBackground.astro';
+import ParticleField from '../components/ParticleField.astro';
 import ImpactCalculator from '../components/ImpactCalculator.astro';
 import LiveProjects from '../components/LiveProjects.astro';
 ---
 
 <Layout title="Open Earth - Crowdsourced City Rebuilding">
 	<AnimatedBackground />
+	<ParticleField />
 	<main>
 		<div class="hero">
 			<div class="hero-background"></div>
@@ -465,3 +467,75 @@ document.querySelectorAll('section').forEach(section => {
 	observer.observe(section);
 });
 </script>
+
+
+<script>
+// 3D Tilt effects on cards
+const tiltElements = document.querySelectorAll('.step, .feature, .principle-list li');
+
+tiltElements.forEach(el => {
+	el.addEventListener('mousemove', (e) => {
+		const rect = el.getBoundingClientRect();
+		const x = e.clientX - rect.left;
+		const y = e.clientY - rect.top;
+		
+		const centerX = rect.width / 2;
+		const centerY = rect.height / 2;
+		
+		const rotateX = (y - centerY) / 10;
+		const rotateY = (centerX - x) / 10;
+		
+		el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+	});
+	
+	el.addEventListener('mouseleave', () => {
+		el.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+	});
+});
+
+// Add smooth cursor follow effect
+const cursor = document.createElement('div');
+cursor.className = 'custom-cursor';
+document.body.appendChild(cursor);
+
+let cursorX = 0;
+let cursorY = 0;
+let currentX = 0;
+let currentY = 0;
+
+document.addEventListener('mousemove', (e) => {
+	cursorX = e.clientX;
+	cursorY = e.clientY;
+});
+
+function updateCursor() {
+	currentX += (cursorX - currentX) * 0.1;
+	currentY += (cursorY - currentY) * 0.1;
+	
+	cursor.style.left = currentX + 'px';
+	cursor.style.top = currentY + 'px';
+	
+	requestAnimationFrame(updateCursor);
+}
+
+updateCursor();
+</script>
+
+<style>
+	.custom-cursor {
+		position: fixed;
+		width: 40px;
+		height: 40px;
+		border: 2px solid rgba(102, 126, 234, 0.5);
+		border-radius: 50%;
+		pointer-events: none;
+		z-index: 9999;
+		transform: translate(-50%, -50%);
+		transition: width 0.3s, height 0.3s, border-color 0.3s;
+	}
+
+	.step, .feature {
+		transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		transform-style: preserve-3d;
+	}
+</style>
