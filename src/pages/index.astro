@@ -1,290 +1,331 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bagh-e Ayandeh | Future Garden - A Vision for a Free Iran</title>
-  
-  <!-- Local Leaflet CSS -->
-  <link rel="stylesheet" href="/Bagh-e-Ayandeh/leaflet/leaflet.css" />
-  
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: #f8fafc;
-    }
-    
-    /* Header/Navigation */
-    .header {
-      background: linear-gradient(135deg, #059669 0%, #0ea5e9 100%);
-      color: white;
-      padding: 20px 40px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-      position: relative;
-      z-index: 1000;
-    }
-    
-    .header-content {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    
-    .logo-icon {
-      font-size: 2.5em;
-    }
-    
-    .logo-text h1 {
-      font-size: 1.8em;
-      margin: 0;
-      font-weight: 700;
-    }
-    
-    .logo-text p {
-      font-size: 0.9em;
-      opacity: 0.9;
-      margin: 0;
-    }
-    
-    .nav {
-      display: flex;
-      gap: 30px;
-      align-items: center;
-    }
-    
-    .nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 8px 16px;
-      border-radius: 8px;
-      transition: all 0.3s;
-      font-size: 1.1em;
-    }
-    
-    .nav a:hover {
-      background: rgba(255,255,255,0.2);
-      transform: translateY(-2px);
-    }
-    
-    /* Map Section */
-    .map-section {
-      position: relative;
-      height: calc(100vh - 100px);
-    }
-    
-    #map {
-      width: 100%;
-      height: 100%;
-    }
-    
-    .map-overlay {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: white;
-      padding: 20px 35px;
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-      z-index: 500;
-      text-align: center;
-      max-width: 650px;
-    }
-    
-    .map-overlay h2 {
-      margin: 0 0 8px 0;
-      color: #0369a1;
-      font-size: 1.5em;
-    }
-    
-    .map-overlay p {
-      margin: 0;
-      color: #666;
-      font-size: 1em;
-    }
-    
-    /* Popup styles */
-    .leaflet-popup-content {
-      text-align: center;
-      font-family: system-ui, sans-serif;
-    }
-    
-    .leaflet-popup-content strong {
-      font-size: 18px;
-      display: block;
-      margin-bottom: 8px;
-      color: #0369a1;
-    }
-    
-    .explore-btn {
-      margin-top: 10px;
-      padding: 10px 20px;
-      background: linear-gradient(to right, #059669, #0ea5e9);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 14px;
-    }
-    
-    .explore-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-      .header-content {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      
-      .nav {
-        flex-wrap: wrap;
-        gap: 15px;
-      }
-      
-      .map-overlay {
-        left: 10px;
-        right: 10px;
-        transform: none;
-        max-width: calc(100% - 20px);
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- Header -->
-  <header class="header">
-    <div class="header-content">
-      <div class="logo">
-        <div class="logo-icon">🌱</div>
-        <div class="logo-text">
-          <h1>Bagh-e Ayandeh</h1>
-          <p>باغ آینده • Future Garden for Iran</p>
-        </div>
-      </div>
-      
-      <nav class="nav">
-        <a href="/Bagh-e-Ayandeh/">Home</a>
-        <a href="/Bagh-e-Ayandeh/shiraz">Shiraz</a>
-      </nav>
-    </div>
-  </header>
+---
+import Layout from '../layouts/Layout.astro';
+---
 
-  <!-- Map Section -->
-  <div class="map-section">
-    <div class="map-overlay">
-      <h2>Where would you like to start?</h2>
-      <p>Click on any city to explore regional solutions for a free Iran</p>
-    </div>
-    <div id="map"></div>
-  </div>
+<Layout title="Open Earth - Crowdsourced City Rebuilding">
+	<main>
+		<div class="hero">
+			<h1 class="title">Open Earth</h1>
+			<p class="tagline">
+				Crowdsourced problem-solving for cities in need
+			</p>
+		</div>
 
-  <!-- Local Leaflet JS -->
-  <script is:inline src="/Bagh-e-Ayandeh/leaflet/leaflet.js"></script>
-  
-  <script is:inline>
-    console.log('Loading Iran map...');
-    
-    // Initialize map centered on Iran
-    const map = L.map('map', {
-      center: [32.4279, 53.6880],
-      zoom: 6,
-      minZoom: 5,
-      maxZoom: 18,
-      zoomControl: true
-    });
+		<section class="vision">
+			<h2>Our Vision</h2>
+			<p class="large">
+				A global platform where people contribute <strong>skills, funding, and expertise</strong> 
+				to rebuild cities and solve real challenges.
+			</p>
+		</section>
 
-    // Add OpenStreetMap tiles
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors',
-      maxZoom: 18
-    }).addTo(map);
+		<section class="how-it-works">
+			<h2>How It Works</h2>
+			<div class="steps">
+				<div class="step">
+					<div class="step-number">1</div>
+					<h3>Identify Problems</h3>
+					<p>Local communities identify concrete challenges</p>
+				</div>
+				<div class="step">
+					<div class="step-number">2</div>
+					<h3>Propose Solutions</h3>
+					<p>Multiple buildable solutions with costs & timelines</p>
+				</div>
+				<div class="step">
+					<div class="step-number">3</div>
+					<h3>Community Support</h3>
+					<p>Vote, pledge money, offer skills or equipment</p>
+				</div>
+				<div class="step">
+					<div class="step-number">4</div>
+					<h3>Build Together</h3>
+					<p>Transparent execution with public tracking</p>
+				</div>
+			</div>
+		</section>
 
-    const basePath = '/Bagh-e-Ayandeh';
+		<section class="pilot">
+			<h2>Pilot City: Shiraz, Iran</h2>
+			<p class="large">
+				We're starting with <strong>Shiraz</strong> — a city facing 30 critical challenges 
+				in water, infrastructure, economy, health, and culture.
+			</p>
+			<a href="/shiraz-full" class="cta-button">
+				Explore Shiraz Challenges →
+			</a>
+		</section>
 
-    // Cities data with accurate coordinates
-    const cities = [
-      { 
-        name: 'Shiraz', 
-        coords: [29.5918, 52.5836], 
-        available: true, 
-        url: basePath + '/shiraz',
-        description: '🏛️ Birthplace of Hafez & Saadi'
-      },
-      { 
-        name: 'Tehran', 
-        coords: [35.6892, 51.3890], 
-        available: false,
-        description: '🏙️ Capital (coming soon)'
-      },
-      { 
-        name: 'Isfahan', 
-        coords: [32.6546, 51.6680], 
-        available: false,
-        description: '🕌 Half of the World (coming soon)'
-      },
-      { 
-        name: 'Tabriz', 
-        coords: [38.0962, 46.2738], 
-        available: false,
-        description: '🏔️ Historic city (coming soon)'
-      },
-      { 
-        name: 'Mashhad', 
-        coords: [36.2605, 59.6168], 
-        available: false,
-        description: '🕌 Spiritual center (coming soon)'
-      }
-    ];
+		<section class="features">
+			<h2>Platform Features</h2>
+			<div class="feature-grid">
+				<div class="feature">
+					<div class="icon">💰</div>
+					<h3>Kickstarter-style Funding</h3>
+					<p>Pledge money with escrow protection</p>
+				</div>
+				<div class="feature">
+					<div class="icon">🛠️</div>
+					<h3>Skill Matching</h3>
+					<p>Connect experts with projects</p>
+				</div>
+				<div class="feature">
+					<div class="icon">📦</div>
+					<h3>Equipment Pledges</h3>
+					<p>Donate tools, materials, machinery</p>
+				</div>
+				<div class="feature">
+					<div class="icon">🗳️</div>
+					<h3>Community Voting</h3>
+					<p>Projects need support to become "ready to start"</p>
+				</div>
+				<div class="feature">
+					<div class="icon">📊</div>
+					<h3>Transparent Tracking</h3>
+					<p>Public progress updates & fund allocation</p>
+				</div>
+				<div class="feature">
+					<div class="icon">🌍</div>
+					<h3>Global & Local</h3>
+					<p>Start with one city, scale worldwide</p>
+				</div>
+			</div>
+		</section>
 
-    // Add city markers
-    cities.forEach(city => {
-      const marker = L.circleMarker(city.coords, {
-        radius: city.available ? 14 : 10,
-        fillColor: city.available ? '#0ea5e9' : '#94a3b8',
-        color: '#fff',
-        weight: 4,
-        opacity: 1,
-        fillOpacity: 0.9
-      }).addTo(map);
+		<section class="principles">
+			<h2>Core Principles</h2>
+			<ul class="principle-list">
+				<li>
+					<strong>Non-political:</strong> Focus on buildable solutions, not ideology
+				</li>
+				<li>
+					<strong>Universal:</strong> Open to all people, all cities, all problems
+				</li>
+				<li>
+					<strong>Transparent:</strong> Every pledge, every decision, publicly visible
+				</li>
+				<li>
+					<strong>Concrete:</strong> Real infrastructure, technology, engineering
+				</li>
+			</ul>
+		</section>
 
-      const popupContent = city.available ? 
-        `<strong>${city.name}</strong><br>${city.description}<br><button class="explore-btn" onclick="window.location.href='${city.url}'">Explore →</button>` :
-        `<strong>${city.name}</strong><br>${city.description}`;
+		<section class="cta">
+			<h2>Join the Movement</h2>
+			<p class="large">
+				Help us build the platform that rebuilds cities.
+			</p>
+			<div class="cta-buttons">
+				<a href="/shiraz-full" class="cta-button primary">
+					View Shiraz Challenges
+				</a>
+				<a href="https://github.com/openearth" class="cta-button secondary">
+					Contribute on GitHub
+				</a>
+			</div>
+		</section>
+	</main>
+</Layout>
 
-      marker.bindPopup(popupContent, {
-        maxWidth: 280,
-        className: 'city-popup'
-      });
-      
-      if (city.available) {
-        marker.on('click', function() {
-          marker.openPopup();
-        });
-      }
-    });
-    
-    console.log('✓ Iran map loaded with ' + cities.length + ' cities!');
-  </script>
-</body>
-</html>
+<style>
+	main {
+		margin: 0 auto;
+		padding: 2rem;
+		max-width: 1200px;
+		font-family: system-ui, sans-serif;
+		line-height: 1.6;
+	}
+
+	.hero {
+		text-align: center;
+		padding: 4rem 2rem;
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		color: white;
+		border-radius: 16px;
+		margin-bottom: 3rem;
+	}
+
+	.title {
+		font-size: 4rem;
+		margin: 0;
+		font-weight: 900;
+		line-height: 1.2;
+	}
+
+	.tagline {
+		font-size: 1.5rem;
+		margin-top: 1rem;
+		opacity: 0.95;
+	}
+
+	section {
+		margin: 4rem 0;
+	}
+
+	h2 {
+		font-size: 2.5rem;
+		color: #667eea;
+		margin-bottom: 2rem;
+		text-align: center;
+	}
+
+	.large {
+		font-size: 1.3rem;
+		line-height: 1.8;
+		text-align: center;
+		max-width: 800px;
+		margin: 1rem auto;
+	}
+
+	.steps {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+		margin-top: 3rem;
+	}
+
+	.step {
+		background: white;
+		border: 2px solid #667eea;
+		border-radius: 12px;
+		padding: 2rem;
+		text-align: center;
+		transition: transform 0.3s, box-shadow 0.3s;
+	}
+
+	.step:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+	}
+
+	.step-number {
+		width: 50px;
+		height: 50px;
+		background: #667eea;
+		color: white;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.5rem;
+		font-weight: bold;
+		margin: 0 auto 1rem;
+	}
+
+	.step h3 {
+		font-size: 1.5rem;
+		margin-bottom: 0.5rem;
+		color: #333;
+	}
+
+	.pilot {
+		background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+		color: white;
+		padding: 3rem;
+		border-radius: 16px;
+		text-align: center;
+	}
+
+	.pilot h2 {
+		color: white;
+	}
+
+	.cta-button {
+		display: inline-block;
+		background: white;
+		color: #f5576c;
+		padding: 1rem 2rem;
+		border-radius: 50px;
+		text-decoration: none;
+		font-weight: bold;
+		font-size: 1.2rem;
+		margin-top: 2rem;
+		transition: transform 0.3s, box-shadow 0.3s;
+	}
+
+	.cta-button:hover {
+		transform: scale(1.05);
+		box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+	}
+
+	.feature-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+	}
+
+	.feature {
+		background: #f8f9fa;
+		padding: 2rem;
+		border-radius: 12px;
+		text-align: center;
+	}
+
+	.icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+
+	.feature h3 {
+		font-size: 1.3rem;
+		color: #333;
+		margin-bottom: 0.5rem;
+	}
+
+	.principle-list {
+		max-width: 800px;
+		margin: 0 auto;
+		list-style: none;
+		padding: 0;
+	}
+
+	.principle-list li {
+		background: white;
+		border-left: 5px solid #667eea;
+		padding: 1.5rem;
+		margin-bottom: 1rem;
+		border-radius: 8px;
+		box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+	}
+
+	.principle-list strong {
+		color: #667eea;
+		font-size: 1.2rem;
+	}
+
+	.cta {
+		text-align: center;
+		padding: 4rem 2rem;
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		color: white;
+		border-radius: 16px;
+	}
+
+	.cta h2 {
+		color: white;
+	}
+
+	.cta-buttons {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		flex-wrap: wrap;
+		margin-top: 2rem;
+	}
+
+	.cta-button.primary {
+		background: white;
+		color: #667eea;
+	}
+
+	.cta-button.secondary {
+		background: transparent;
+		border: 2px solid white;
+		color: white;
+	}
+
+	.cta-button.secondary:hover {
+		background: white;
+		color: #667eea;
+	}
+</style>
