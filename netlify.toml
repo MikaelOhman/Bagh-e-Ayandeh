@@ -6,3 +6,19 @@
   
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Redirect old Astro routes
+[[redirects]]
+  from = "/shiraz"
+  to = "/problems"
+  status = 301
+
+[[redirects]]
+  from = "/shiraz-full"
+  to = "/problems"
+  status = 301
+
+[[redirects]]
+  from = "/real-map"
+  to = "/problems"
+  status = 301

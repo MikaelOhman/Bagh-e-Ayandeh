@@ -1,0 +1,11 @@
+# Redirect old Astro routes to new Next.js structure
+/shiraz /problems 301
+/shiraz-full /problems 301
+/real-map /problems 301
+/map-test /problems 301
+/map-test2 /problems 301
+/svg-map /problems 301
+/js-test / 301
+
+# Catch-all for SPA routing
+/* /index.html 200
