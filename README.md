@@ -1,43 +1,102 @@
-# Astro Starter Kit: Minimal
+# Open Earth 🌍
 
-```sh
-npm create astro@latest -- --template minimal
+**One Earth. Open to all. Built together.**
+
+A global platform where humanity collaborates to solve problems through crowdsourced solutions, expertise, and funding.
+
+---
+
+## 🚀 Quick Start
+
+```bash
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Open http://localhost:3000
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 📦 Tech Stack
 
-## 🚀 Project Structure
+- **Framework:** Next.js 14 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Deployment:** Vercel
+- **Database:** Supabase (coming soon)
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🏗️ Project Structure
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```
+openearth/
+├── app/
+│   ├── layout.tsx          # Root layout
+│   ├── page.tsx            # Homepage
+│   └── globals.css         # Global styles
+├── components/
+│   ├── Header.tsx          # Navigation
+│   ├── Hero.tsx            # Hero section
+│   ├── HowItWorks.tsx      # Process explanation
+│   ├── FeaturedProjects.tsx # Project showcase
+│   ├── CallToAction.tsx    # CTA section
+│   └── Footer.tsx          # Footer
+├── public/                 # Static assets
+├── tailwind.config.ts      # Tailwind configuration
+└── tsconfig.json           # TypeScript configuration
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🌍 Origin Story
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Started with **باغ آینده (Bagh-e Ayandeh / Future Garden)** - a vision for Iran's reconstruction after freedom. But the idea is universal. Every country, every community can build their future together.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## 🎨 Design Principles
 
-## 🧞 Commands
+- **Clean & Modern:** Focus on content, not clutter
+- **Global-First:** RTL support for Persian/Arabic
+- **Mobile-First:** Responsive on all devices
+- **Fast:** Optimized for performance
+- **Accessible:** WCAG compliant
 
-All commands are run from the root of the project, from a terminal:
+## 🔜 Coming Soon
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- Project submission system
+- User authentication
+- Funding/pledge system
+- File upload (CAD, PDFs, images)
+- Community voting
+- Multi-language support (EN, FA, AR)
+- Supabase integration
 
-## 👀 Want to learn more?
+## 📝 Development
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```bash
+# Build for production
+npm run build
+
+# Start production server
+npm start
+
+# Lint
+npm run lint
+```
+
+## 🚀 Deployment
+
+This project is designed to deploy on Vercel with zero configuration:
+
+1. Push to GitHub
+2. Import project on Vercel
+3. Deploy!
+
+## 🤝 Contributing
+
+We welcome contributions! This is an open-source project for a better world.
+
+## 📄 License
+
+MIT - Built with hope for humanity.
+
+---
+
+**Let's build the future together.** 🌍✨
