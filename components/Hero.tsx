@@ -26,16 +26,16 @@ export default function Hero() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link 
-              href="/explore"
+              href="/problems"
               className="w-full sm:w-auto px-8 py-4 bg-emerald-600 text-white text-lg font-medium rounded-full hover:bg-emerald-700 transition shadow-lg hover:shadow-xl"
             >
-              Explore Projects 🌍
+              Browse Problems 🔍
             </Link>
             <Link 
-              href="/contribute"
+              href="/projects"
               className="w-full sm:w-auto px-8 py-4 bg-white text-emerald-600 text-lg font-medium rounded-full border-2 border-emerald-600 hover:bg-emerald-50 transition"
             >
-              Start Contributing
+              View Projects 🌍
             </Link>
           </div>
 
